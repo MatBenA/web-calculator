@@ -9,31 +9,52 @@ h1 {
 
 .calculator {
   background-color: aquamarine;
-  width: 30%;
-  min-width: 400px;
+  width: 280px;
+  /* min-width: 400px; */
+  height: 500px;
   margin: auto;
+  padding: 10px;
 
-}
-
-div{
-    text-align: center;
-    border: 1px solid black
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .display {
-    
+  text-align: end;
+
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.expression {
+  flex-grow: 1;
+}
+
+.result {
+  flex-grow: 2;
 }
 
 .input {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+  text-align: center;
+
+  flex-grow: 2;
+  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
-.clear{
-    grid-column: 1/3;
+.clear {
+  grid-column: 1/3;
 }
 
-.result{
-    grid-column: 3/5;
+.result {
+  grid-column: 3/5;
+}
+
+div {
+  
+  border: 1px solid black;
+  font-size: 20px;
 }
