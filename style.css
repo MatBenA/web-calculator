@@ -1,0 +1,17 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+h1{
+    text-align: center;
+}
+
+.calculator{
+    background-color: aquamarine;
+    width: 40%;
+    min-width: 400px;
+    margin: auto;
+    display: grid;
+    
+}
