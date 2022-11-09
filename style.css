@@ -89,13 +89,13 @@ h1 {
 
 .special {
   color: #ff646c;
-  background-color: #494949;
+  background-color: #5e5e5e;
   border: none;
   box-shadow: 4px 4px 10px #333333;
 }
 
 .special:hover{
-  background-color: #585858;
+  background-color: #6d6d6d;
   cursor: pointer;
 }
 
