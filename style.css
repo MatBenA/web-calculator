@@ -2,6 +2,7 @@
   margin: 0px;
   padding: 0px;
   font-family: "Roboto", sans-serif;
+  background-color: #9c8686;
 }
 
 h1 {
@@ -11,7 +12,7 @@ h1 {
 .calculator {
   background-color: #303030;
   width: 280px;
-  /* min-width: 400px; */
+  box-shadow: 7px 7px 15px #000000;
   height: 500px;
   margin: auto;
   border: 4px solid black;
@@ -24,8 +25,10 @@ h1 {
 }
 
 .display {
+  background-color: inherit;
   padding-right: 15px;
   max-height: 95px;
+  border-radius: inherit;
 
   display: flex;
   flex-direction: column;
@@ -33,6 +36,8 @@ h1 {
 }
 
 .expression {
+  background-color: inherit;
+  border-top-left-radius: inherit;
   max-height: 32px;
   display: flex;
   flex-grow: 1;
@@ -41,8 +46,10 @@ h1 {
 }
 
 .result {
+  background-color: inherit;
   color: #ff646c;
   max-height: 63px;
+  font-size: 40px;
 
   display: flex;
   flex-grow: 2;
@@ -50,9 +57,7 @@ h1 {
   align-items: center;
 }
 
-.result > p {
-  font-size: 40px;
-}
+
 
 .input {
   text-align: center;
