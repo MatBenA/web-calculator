@@ -83,19 +83,19 @@ h1 {
 }
 
 .digit:hover {
-  background-color: #575757;
+  background-color: #5f5f5f;
   cursor: pointer;
 }
 
 .special {
   color: #ff646c;
-  background-color: #5f5f5f;
+  background-color: #494949;
   border: none;
   box-shadow: 4px 4px 10px #333333;
 }
 
 .special:hover{
-  background-color: #616161;
+  background-color: #585858;
   cursor: pointer;
 }
 
