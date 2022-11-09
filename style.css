@@ -24,7 +24,7 @@ h1 {
 }
 
 .display {
-  text-align: end;
+  padding-right: 15px;
 
   display: flex;
   flex-direction: column;
@@ -32,12 +32,21 @@ h1 {
 }
 
 .expression {
+  display: flex;
   flex-grow: 1;
+  justify-content: end;
+  align-items: flex-end;
 }
 
 .result {
-  flex-grow: 2;
+
+  align-content: center;
   color: #ff646c;
+
+  display: flex;
+  flex-grow: 2;
+  justify-content: end;
+  align-items: center;
 }
 
 .input {
@@ -52,6 +61,12 @@ h1 {
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+.input > div{
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .special{
@@ -112,7 +127,6 @@ h1 {
 
 
 .clear {
-  line-height: ;
   grid-column: 1 / span 2;
 }
 
