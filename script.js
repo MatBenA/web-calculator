@@ -51,49 +51,49 @@ let expression = [];
 
 //addEventBtn(){}
 const zero = document.querySelector(".zero");
-zero.addEventListener("click", () => main(0, "number"));
+zero.addEventListener("click", () => main(0));
 
 const one = document.querySelector(".one");
-one.addEventListener("click", () => main(1, "number"));
+one.addEventListener("click", () => main(1));
 
 const two = document.querySelector(".two");
-two.addEventListener("click", () => main(2, "number"));
+two.addEventListener("click", () => main(2));
 
 const three = document.querySelector(".three");
-three.addEventListener("click", () => main(3, "number"));
+three.addEventListener("click", () => main(3));
 
 const four = document.querySelector(".four");
-four.addEventListener("click", () => main(4, "number"));
+four.addEventListener("click", () => main(4));
 
 const five = document.querySelector(".five");
-five.addEventListener("click", () => main(5, "number"));
+five.addEventListener("click", () => main(5));
 
 const six = document.querySelector(".six");
-six.addEventListener("click", () => main(6, "number"));
+six.addEventListener("click", () => main(6));
 
 const seven = document.querySelector(".seven");
-seven.addEventListener("click", () => main(7, "number"));
+seven.addEventListener("click", () => main(7));
 
 const eight = document.querySelector(".eight");
-eight.addEventListener("click", () => main(8, "number"));
+eight.addEventListener("click", () => main(8));
 
 const nine = document.querySelector(".nine");
-nine.addEventListener("click", () => main(9, "number"));
+nine.addEventListener("click", () => main(9));
 
 const decimal = document.querySelector(".decimal");
 decimal.addEventListener("click", () => main("."));
 
 const plus = document.querySelector(".add");
-plus.addEventListener("click", () => main(" + ", "operator"));
+plus.addEventListener("click", () => main("+"));
 
 const minus = document.querySelector(".substract");
-minus.addEventListener("click", () => main("-", "operator"));
+minus.addEventListener("click", () => main("-"));
 
 const mult = document.querySelector(".multiply");
-mult.addEventListener("click", () => main("×", "operator"));
+mult.addEventListener("click", () => main("×"));
 
 const div = document.querySelector(".divide");
-div.addEventListener("click", () => main("÷", "operator"));
+div.addEventListener("click", () => main("÷"));
 
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => main("clear"));
@@ -117,23 +117,25 @@ function main(button, type) {
   }
 
   if (isOperator(button)) {
-    if (compareOneElement(expression)){
-      
+    if (onlyOnce(expression)) {
+      expression.push(button);
+      resultDisp.textContent = expression.join("");
     }
   }
 }
 
-/* if one element in arrayA(expression) is equal to an 
-element in array operators return true, else return false
-This is so an operator can only be entered once
+/*
+  if one element in arrayA(expression) is also in
+  operators array return false, else return true
+  This is so an operator can only be entered once.
 */
-function compareOneElement(expression) {
-  const operators = [" + ", "-", "×", "÷"];
-  let confirm;
+function onlyOnce(expression) {
+  const operators = ["+", "-", "×", "÷"];
+  let confirm = true;
   expression.forEach((element) => {
     operators.forEach((operator) => {
       if (element === operator) {
-        confirm = true;
+        confirm = false;
       }
     });
   });
@@ -142,7 +144,7 @@ function compareOneElement(expression) {
 
 //returns whether the button pressed was an operator or not
 function isOperator(button) {
-  const operators = [" + ", "-", "×", "÷"];
+  const operators = ["+", "-", "×", "÷"];
   let confirm = false;
 
   operators.forEach((operator) => {
