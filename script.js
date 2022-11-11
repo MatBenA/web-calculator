@@ -50,63 +50,63 @@ let expression = [];
 
 //addEventBtn(){}
 const zero = document.querySelector(".zero");
-zero.addEventListener("click", () => expression.push(0));
+zero.addEventListener("click", () => main(0));
 
 const one = document.querySelector(".one");
-one.addEventListener("click", () => expression.push(1));
+one.addEventListener("click", () => main(1));
 
 const two = document.querySelector(".two");
-two.addEventListener("click", () => expression.push(2));
+two.addEventListener("click", () => main(2));
 
 const three = document.querySelector(".three");
-three.addEventListener("click", () => expression.push(3));
+three.addEventListener("click", () => main(3));
 
 const four = document.querySelector(".four");
-four.addEventListener("click", () => expression.push(4));
+four.addEventListener("click", () => main(4));
 
 const five = document.querySelector(".five");
-five.addEventListener("click", () => expression.push(5));
+five.addEventListener("click", () => main(5));
 
 const six = document.querySelector(".six");
-six.addEventListener("click", () => expression.push(6));
+six.addEventListener("click", () => main(6));
 
 const seven = document.querySelector(".seven");
-seven.addEventListener("click", () => expression.push(7));
+seven.addEventListener("click", () => main(7));
 
 const eight = document.querySelector(".eight");
-eight.addEventListener("click", () => expression.push(8));
+eight.addEventListener("click", () => main(8));
 
 const nine = document.querySelector(".nine");
-nine.addEventListener("click", () => expression.push(9));
+nine.addEventListener("click", () => main(9));
 
 const decimal = document.querySelector(".decimal");
-decimal.addEventListener("click", () => expression.push("."));
+decimal.addEventListener("click", () => main("."));
 
 const plus = document.querySelector(".add");
-plus.addEventListener("click", () => expression.push("+"));
+plus.addEventListener("click", () => main("+"));
 
 const minus = document.querySelector(".substract");
-minus.addEventListener("click", () => expression.push("−"));
+minus.addEventListener("click", () => main("−"));
 
 const mult = document.querySelector(".multiply");
-mult.addEventListener("click", () => expression.push("×"));
+mult.addEventListener("click", () => main("×"));
 
 const div = document.querySelector(".divide");
-div.addEventListener("click", () => expression.push("÷"));
+div.addEventListener("click", () => main("÷"));
 
 const clear = document.querySelector(".clear");
-clear.addEventListener("click", () => console.log("clear"));
+clear.addEventListener("click", () => main("clear"));
 
 const del = document.querySelector(".delete");
-del.addEventListener("click", () => console.log("del"));
+del.addEventListener("click", () => main("del"));
 
 const equal = document.querySelector(".equal");
-equal.addEventListener("click", () => console.log("="));
+equal.addEventListener("click", () => main("="));
 
 //this function must be called every time a button is pressed and its argument must be
 //the value of said button.
 function main(button){
-
+  console.log(button);
 }
 /*
 Calculator general behavior:
