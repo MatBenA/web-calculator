@@ -46,6 +46,7 @@ function operate(aNum, operator, bNum) {
   }
 }
 
+//the expression that will be shown in the display no more than 11 elements
 let expression = [];
 
 //addEventBtn(){}
@@ -103,11 +104,45 @@ del.addEventListener("click", () => main("del"));
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => main("="));
 
+const resultDisp = document.querySelector(".result");
+
 //this function must be called every time a button is pressed and its argument must be
 //the value of said button.
 function main(button){
-  console.log(button);
+  if (typeof button === "number"){
+    //the number pressed is pushed into the array
+    expression.push(button);
+    resultDisp.textContent = expression.join("");
+    return null;
+  }
+
+  if (compareOneElement(expression)){
+    return null
+  }
+  else{
+    expression.push(button);
+    resultDisp.textContent = expression.join("");
+  }
+
 }
+
+/* if one element in arrayA(expression) is equal to an 
+element in array operators return true, else return false
+This is so an operator can only be entered once
+*/
+function compareOneElement(expression){
+  const operators = ["+", "−", "×", "÷"];
+  let confirm;
+  expression.forEach(element => {
+    operators.forEach(operator => {
+      if(element === operator){
+        confirm = true;
+      }
+    });
+  });
+  return confirm;
+}
+
 /*
 Calculator general behavior:
   When you make your first calculation it will do it normally

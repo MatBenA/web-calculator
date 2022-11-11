@@ -45,6 +45,7 @@ h1 {
   align-items: flex-end;
 }
 
+/* the maximum amount of numbers in this display is 11 numbers */
 .result {
   background-color: inherit;
   color: #ff646c;
