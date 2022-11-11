@@ -51,49 +51,49 @@ let expression = [];
 
 //addEventBtn(){}
 const zero = document.querySelector(".zero");
-zero.addEventListener("click", () => main(0));
+zero.addEventListener("click", () => main(0, "number"));
 
 const one = document.querySelector(".one");
-one.addEventListener("click", () => main(1));
+one.addEventListener("click", () => main(1, "number"));
 
 const two = document.querySelector(".two");
-two.addEventListener("click", () => main(2));
+two.addEventListener("click", () => main(2, "number"));
 
 const three = document.querySelector(".three");
-three.addEventListener("click", () => main(3));
+three.addEventListener("click", () => main(3, "number"));
 
 const four = document.querySelector(".four");
-four.addEventListener("click", () => main(4));
+four.addEventListener("click", () => main(4, "number"));
 
 const five = document.querySelector(".five");
-five.addEventListener("click", () => main(5));
+five.addEventListener("click", () => main(5, "number"));
 
 const six = document.querySelector(".six");
-six.addEventListener("click", () => main(6));
+six.addEventListener("click", () => main(6, "number"));
 
 const seven = document.querySelector(".seven");
-seven.addEventListener("click", () => main(7));
+seven.addEventListener("click", () => main(7, "number"));
 
 const eight = document.querySelector(".eight");
-eight.addEventListener("click", () => main(8));
+eight.addEventListener("click", () => main(8, "number"));
 
 const nine = document.querySelector(".nine");
-nine.addEventListener("click", () => main(9));
+nine.addEventListener("click", () => main(9, "number"));
 
 const decimal = document.querySelector(".decimal");
 decimal.addEventListener("click", () => main("."));
 
 const plus = document.querySelector(".add");
-plus.addEventListener("click", () => main("+"));
+plus.addEventListener("click", () => main(" + ", "operator"));
 
 const minus = document.querySelector(".substract");
-minus.addEventListener("click", () => main("−"));
+minus.addEventListener("click", () => main("-", "operator"));
 
 const mult = document.querySelector(".multiply");
-mult.addEventListener("click", () => main("×"));
+mult.addEventListener("click", () => main("×", "operator"));
 
 const div = document.querySelector(".divide");
-div.addEventListener("click", () => main("÷"));
+div.addEventListener("click", () => main("÷", "operator"));
 
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => main("clear"));
@@ -108,37 +108,47 @@ const resultDisp = document.querySelector(".result");
 
 //this function must be called every time a button is pressed and its argument must be
 //the value of said button.
-function main(button){
-  if (typeof button === "number"){
+function main(button, type) {
+  if (typeof button === "number") {
     //the number pressed is pushed into the array
     expression.push(button);
     resultDisp.textContent = expression.join("");
     return null;
   }
 
-  if (compareOneElement(expression)){
-    return null
+  if (isOperator(button)) {
+    if (compareOneElement(expression)){
+      
+    }
   }
-  else{
-    expression.push(button);
-    resultDisp.textContent = expression.join("");
-  }
-
 }
 
 /* if one element in arrayA(expression) is equal to an 
 element in array operators return true, else return false
 This is so an operator can only be entered once
 */
-function compareOneElement(expression){
-  const operators = ["+", "−", "×", "÷"];
+function compareOneElement(expression) {
+  const operators = [" + ", "-", "×", "÷"];
   let confirm;
-  expression.forEach(element => {
-    operators.forEach(operator => {
-      if(element === operator){
+  expression.forEach((element) => {
+    operators.forEach((operator) => {
+      if (element === operator) {
         confirm = true;
       }
     });
+  });
+  return confirm;
+}
+
+//returns whether the button pressed was an operator or not
+function isOperator(button) {
+  const operators = [" + ", "-", "×", "÷"];
+  let confirm = false;
+
+  operators.forEach((operator) => {
+    if (button === operator) {
+      confirm = true;
+    }
   });
   return confirm;
 }
