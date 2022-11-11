@@ -113,20 +113,27 @@ function main(button, type) {
     //the number pressed is pushed into the array
     expression.push(button);
     resultDisp.textContent = expression.join("");
-    
   }
 
-  if (isOperator(button)) {
-    if (expression.length > 0) {
-      if (onlyOnce(expression)) {
-        expression.push(button);
+
+  if (isOperator(button)) {//checks if the button pressed is an operator
+    if (expression.length > 0) {//checks if its not the the first place
+      if (onlyOnce(expression)) {//checks that there is only one operator in the exrpession
+        expression.push(button); //adds the operator to the expression
         resultDisp.textContent = expression.join("");
       }
     }
   }
 
-  if(button === "del"){
+  //deletes the last item introduced in the calculator
+  if (button === "del") {
     expression.pop();
+    resultDisp.textContent = expression.join("");
+  }
+
+  //deletes all the elements in the array and refreshes the display
+  if (button === "clear") {
+    expression.splice(0, expression.length)
     resultDisp.textContent = expression.join("");
   }
 }
