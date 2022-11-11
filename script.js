@@ -113,7 +113,7 @@ function main(button, type) {
     //the number pressed is pushed into the array
     expression.push(button);
     resultDisp.textContent = expression.join("");
-    return null;
+    
   }
 
   if (isOperator(button)) {
@@ -125,7 +125,10 @@ function main(button, type) {
     }
   }
 
-  
+  if(button === "del"){
+    expression.pop();
+    resultDisp.textContent = expression.join("");
+  }
 }
 
 /*
