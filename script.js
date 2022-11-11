@@ -33,11 +33,11 @@ function operate(aNum, operator, bNum) {
       return subtract(aNum, bNum);
       break;
 
-    case "*":
+    case "×":
       return multiply(aNum, bNum);
       break;
 
-    case "/":
+    case "÷":
       return divide(aNum, bNum);
       break;
 
@@ -108,6 +108,8 @@ const resultDisp = document.querySelector(".result");
 
 //this function must be called every time a button is pressed and its argument must be
 //the value of said button.
+let opIndex;
+let opSelected;
 function main(button, type) {
   if (typeof button === "number") {
     //the number pressed is pushed into the array
@@ -115,11 +117,15 @@ function main(button, type) {
     resultDisp.textContent = expression.join("");
   }
 
-
-  if (isOperator(button)) {//checks if the button pressed is an operator
-    if (expression.length > 0) {//checks if its not the the first place
-      if (onlyOnce(expression)) {//checks that there is only one operator in the exrpession
+  if (isOperator(button)) {
+    //checks if the button pressed is an operator
+    if (expression.length > 0) {
+      //checks if its not the the first place
+      if (onlyOnce(expression)) {
+        //checks that there is only one operator in the exrpession
         expression.push(button); //adds the operator to the expression
+        opIndex = expression.indexOf(button); //stores the index of the operator to be used later in the calculation
+        opSelected = button;
         resultDisp.textContent = expression.join("");
       }
     }
@@ -133,7 +139,22 @@ function main(button, type) {
 
   //deletes all the elements in the array and refreshes the display
   if (button === "clear") {
-    expression.splice(0, expression.length)
+    clearExp();
+  }
+
+  if (button == "=") {
+    let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
+    firstTerm = parseInt(firstTerm); //parses the term into a integer
+    console.log(firstTerm);
+
+    let secondTerm = expression.slice(++opIndex, expression.length).join(""); //selects the second term of the array
+    secondTerm = parseInt(secondTerm); //parses the term into a integer
+    console.log(secondTerm);
+
+    clearExp();
+
+    expression[0] = operate(firstTerm, opSelected, secondTerm);
+
     resultDisp.textContent = expression.join("");
   }
 }
@@ -167,6 +188,11 @@ function isOperator(button) {
     }
   });
   return confirm;
+}
+
+function clearExp() {
+  expression.splice(0, expression.length);
+  resultDisp.textContent = expression.join("");
 }
 
 /*
