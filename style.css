@@ -141,13 +141,7 @@ h1 {
   grid-column: 1/2;
 }
 
-.eight {
-}
-
-.nine {
-}
-
-.point {
+.decimal {
   grid-column: 2/3;
   grid-row: 5/6;
 }

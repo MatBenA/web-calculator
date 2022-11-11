@@ -46,14 +46,68 @@ function operate(aNum, operator, bNum) {
   }
 }
 
-allButtons = document.querySelectorAll("button");
-console.log(allButtons);
+let expression = [];
 
-//give color when buttons are clicked
-allButtons.forEach((button) => {
-  button.addEventlistener("click", (button) => console.log(button));
-});
+//addEventBtn(){}
+const zero = document.querySelector(".zero");
+zero.addEventListener("click", () => expression.push(0));
 
+const one = document.querySelector(".one");
+one.addEventListener("click", () => expression.push(1));
+
+const two = document.querySelector(".two");
+two.addEventListener("click", () => expression.push(2));
+
+const three = document.querySelector(".three");
+three.addEventListener("click", () => expression.push(3));
+
+const four = document.querySelector(".four");
+four.addEventListener("click", () => expression.push(4));
+
+const five = document.querySelector(".five");
+five.addEventListener("click", () => expression.push(5));
+
+const six = document.querySelector(".six");
+six.addEventListener("click", () => expression.push(6));
+
+const seven = document.querySelector(".seven");
+seven.addEventListener("click", () => expression.push(7));
+
+const eight = document.querySelector(".eight");
+eight.addEventListener("click", () => expression.push(8));
+
+const nine = document.querySelector(".nine");
+nine.addEventListener("click", () => expression.push(9));
+
+const decimal = document.querySelector(".decimal");
+decimal.addEventListener("click", () => expression.push("."));
+
+const plus = document.querySelector(".add");
+plus.addEventListener("click", () => expression.push("+"));
+
+const minus = document.querySelector(".substract");
+minus.addEventListener("click", () => expression.push("−"));
+
+const mult = document.querySelector(".multiply");
+mult.addEventListener("click", () => expression.push("×"));
+
+const div = document.querySelector(".divide");
+div.addEventListener("click", () => expression.push("÷"));
+
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", () => console.log("clear"));
+
+const del = document.querySelector(".delete");
+del.addEventListener("click", () => console.log("del"));
+
+const equal = document.querySelector(".equal");
+equal.addEventListener("click", () => console.log("="));
+
+//this function must be called every time a button is pressed and its argument must be
+//the value of said button.
+function main(button){
+
+}
 /*
 Calculator general behavior:
   When you make your first calculation it will do it normally
@@ -136,7 +190,7 @@ Equal Button Behavior:
     
 */
 
-/*
+/*TODO
 Asign an event listener to each button, this will execute
 a function that will return the number or symbol asigned to each button.
 
