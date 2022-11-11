@@ -117,11 +117,15 @@ function main(button, type) {
   }
 
   if (isOperator(button)) {
-    if (onlyOnce(expression)) {
-      expression.push(button);
-      resultDisp.textContent = expression.join("");
+    if (expression.length > 0) {
+      if (onlyOnce(expression)) {
+        expression.push(button);
+        resultDisp.textContent = expression.join("");
+      }
     }
   }
+
+  
 }
 
 /*
