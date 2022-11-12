@@ -142,18 +142,17 @@ function main(button, type) {
     clearExp();
   }
 
+  //TO DO
   if (button == "=") {
     let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
     firstTerm = parseInt(firstTerm); //parses the term into a integer
-    console.log(firstTerm);
 
     let secondTerm = expression.slice(++opIndex, expression.length).join(""); //selects the second term of the array
     secondTerm = parseInt(secondTerm); //parses the term into a integer
-    console.log(secondTerm);
 
     clearExp();
 
-    expression[0] = operate(firstTerm, opSelected, secondTerm);
+    expression = [...`${operate(firstTerm, opSelected, secondTerm)}`];
 
     resultDisp.textContent = expression.join("");
   }
