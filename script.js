@@ -105,6 +105,7 @@ const equal = document.querySelector(".equal");
 equal.addEventListener("click", () => main("="));
 
 const resultDisp = document.querySelector(".result");
+const expressionDisplay = document.querySelector(".expression");
 
 //this function must be called every time a button is pressed and its argument must be
 //the value of said button.
@@ -152,6 +153,7 @@ function main(button, type) {
 
   if (button == "=") {
     if (validExpression()) {
+      displayExpression();
       displayResult();
     }
   }
@@ -223,6 +225,10 @@ function validExpression() {
   }
 
   else return false;
+}
+
+function displayExpression(){
+  expressionDisplay.textContent = resultDisp.textContent;
 }
 
 /*

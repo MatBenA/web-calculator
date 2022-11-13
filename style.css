@@ -39,6 +39,9 @@ h1 {
   background-color: inherit;
   border-top-left-radius: inherit;
   max-height: 32px;
+  font-size: 23px;
+  color: #d6d6d6;
+
   display: flex;
   flex-grow: 1;
   justify-content: end;
