@@ -110,6 +110,13 @@ const resultDisp = document.querySelector(".result");
 //the value of said button.
 let opIndex;
 let opSelected;
+
+/*TODO 
+  add functionality to expression display.
+  limit number of digits that can be shown in the display.
+  add decimal point button functionality.
+  add feature to add a minus simbol at the begining of an expression.
+*/
 function main(button, type) {
   if (typeof button === "number") {
     //the number pressed is pushed into the array
@@ -118,6 +125,7 @@ function main(button, type) {
   }
 
   if (isOperator(button)) {
+    //arreglar signo menos al principio
     //checks if the button pressed is an operator
     if (expression.length > 0) {
       //checks if its not the the first place
@@ -142,19 +150,10 @@ function main(button, type) {
     clearExp();
   }
 
-  //TO DO
   if (button == "=") {
-    let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
-    firstTerm = parseInt(firstTerm); //parses the term into a integer
-
-    let secondTerm = expression.slice(++opIndex, expression.length).join(""); //selects the second term of the array
-    secondTerm = parseInt(secondTerm); //parses the term into a integer
-
-    clearExp();
-
-    expression = [...`${operate(firstTerm, opSelected, secondTerm)}`];
-
-    resultDisp.textContent = expression.join("");
+    if (validExpression()) {
+      displayResult();
+    }
   }
 }
 
@@ -192,6 +191,38 @@ function isOperator(button) {
 function clearExp() {
   expression.splice(0, expression.length);
   resultDisp.textContent = expression.join("");
+}
+
+function displayResult() {
+  let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
+  firstTerm = parseInt(firstTerm); //parses the term into a integer
+
+  let secondTerm = expression.slice(opIndex + 1, expression.length).join(""); //selects the second term of the array
+  secondTerm = parseInt(secondTerm); //parses the term into a integer
+
+  //clears the array and the display
+  clearExp();
+
+  //get the result spread it and store it in the expression array
+  expression = [...`${operate(firstTerm, opSelected, secondTerm)}`];
+
+  resultDisp.textContent = expression.join("");
+}
+
+function validExpression() {
+
+  if (opIndex !== undefined){
+  
+  let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
+  firstTerm = parseInt(firstTerm); //parses the term into a integer
+
+  let secondTerm = expression.slice(opIndex + 1, expression.length).join(""); //selects the second term of the array
+  secondTerm = parseInt(secondTerm); //parses the term into a integer
+
+  return (isNaN(firstTerm) || isNaN(secondTerm) ? false : true)
+  }
+
+  else return false;
 }
 
 /*
@@ -276,7 +307,7 @@ Equal Button Behavior:
     
 */
 
-/*TODO
+/*
 Asign an event listener to each button, this will execute
 a function that will return the number or symbol asigned to each button.
 
