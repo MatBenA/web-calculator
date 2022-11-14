@@ -113,16 +113,22 @@ let opIndex;
 let opSelected;
 
 /*TODO 
-  add functionality to expression display.
-  limit number of digits that can be shown in the display.
   add decimal point button functionality.
   add feature to add a minus simbol at the begining of an expression.
 */
 function main(button, type) {
+
+  //clears the display when there is an infity result
+  if (resultDisp.textContent === "Infinity"){
+    clearExp();
+  }
+
   if (typeof button === "number") {
     //the number pressed is pushed into the array
-    expression.push(button);
-    resultDisp.textContent = expression.join("");
+    if (expression.length <= 10) {
+      expression.push(button);
+      resultDisp.textContent = expression.join("");
+    }
   }
 
   if (isOperator(button)) {
@@ -140,6 +146,12 @@ function main(button, type) {
     }
   }
 
+  if (button === ".") {
+
+    expression.push(button);
+    resultDisp.textContent = expression.join("");
+  }
+
   //deletes the last item introduced in the calculator
   if (button === "del") {
     expression.pop();
@@ -149,6 +161,7 @@ function main(button, type) {
   //deletes all the elements in the array and refreshes the display
   if (button === "clear") {
     clearExp();
+    expressionDisplay.textContent = resultDisp.textContent;
   }
 
   if (button == "=") {
@@ -197,38 +210,47 @@ function clearExp() {
 
 function displayResult() {
   let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
-  firstTerm = parseInt(firstTerm); //parses the term into a integer
+  firstTerm = parseFloat(firstTerm); //parses the term into a integer
 
   let secondTerm = expression.slice(opIndex + 1, expression.length).join(""); //selects the second term of the array
-  secondTerm = parseInt(secondTerm); //parses the term into a integer
+  secondTerm = parseFloat(secondTerm); //parses the term into a integer
 
   //clears the array and the display
   clearExp();
 
   //get the result spread it and store it in the expression array
-  expression = [...`${operate(firstTerm, opSelected, secondTerm)}`];
+
+  let calculationResult = operate(firstTerm, opSelected, secondTerm);
+
+  calculationResult = fixDecimal(calculationResult);
+
+  expression = [...`${calculationResult}`];
 
   resultDisp.textContent = expression.join("");
 }
 
 function validExpression() {
+  if (opIndex !== undefined) {
+    let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
+    firstTerm = parseInt(firstTerm); //parses the term into a integer
 
-  if (opIndex !== undefined){
-  
-  let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
-  firstTerm = parseInt(firstTerm); //parses the term into a integer
+    let secondTerm = expression.slice(opIndex + 1, expression.length).join(""); //selects the second term of the array
+    secondTerm = parseInt(secondTerm); //parses the term into a integer
 
-  let secondTerm = expression.slice(opIndex + 1, expression.length).join(""); //selects the second term of the array
-  secondTerm = parseInt(secondTerm); //parses the term into a integer
-
-  return (isNaN(firstTerm) || isNaN(secondTerm) ? false : true)
-  }
-
-  else return false;
+    return isNaN(firstTerm) || isNaN(secondTerm) ? false : true;
+  } else return false;
 }
 
-function displayExpression(){
+function displayExpression() {
   expressionDisplay.textContent = resultDisp.textContent;
+}
+
+function fixDecimal(calculationResult) {
+  if (Number.isInteger(calculationResult)) {
+    return calculationResult;
+  } else {
+    return calculationResult.toFixed(2);
+  }
 }
 
 /*
