@@ -145,8 +145,10 @@ function main(button, type) {
   }
 
   if (button === ".") {
-    expression.push(button);
-    resultDisp.textContent = expression.join("");
+    if (typeof expression[expression.length - 1] === "number") {
+      expression.push(button);
+      resultDisp.textContent = expression.join("");
+    }
   }
 
   //deletes the last item introduced in the calculator
