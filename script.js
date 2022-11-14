@@ -145,6 +145,7 @@ function main(button, type) {
   }
 
   if (button === ".") {
+    //can only be added if last digit was a number
     if (typeof expression[expression.length - 1] === "number") {
       expression.push(button);
       resultDisp.textContent = expression.join("");
