@@ -147,8 +147,13 @@ function main(button, type) {
   if (button === ".") {
     //can only be added if last digit was a number
     if (typeof expression[expression.length - 1] === "number") {
-      expression.push(button);
-      resultDisp.textContent = expression.join("");
+      if (validExpression()) {
+        expression.push(button);
+        resultDisp.textContent = expression.join("");
+      } else if (noDecimalFrom(0)) {
+        expression.push(button);
+        resultDisp.textContent = expression.join("");
+      }
     }
   }
 
@@ -243,14 +248,27 @@ function validExpression() {
   } else return false;
 }
 
+//displays the expression in the expression display
 function displayExpression() {
   expressionDisplay.textContent = resultDisp.textContent;
 }
 
+//fixes the decimal points to only two
 function fixDecimal(calculationResult) {
   if (Number.isInteger(calculationResult)) {
     return calculationResult;
   } else {
     return calculationResult.toFixed(2);
   }
+}
+
+// checks if there is no decimal point in the entire expression
+function noDecimalFrom(startPoint) {
+  let confirm = true;
+  for(let i = startPoint; i < expression.length; i++){
+    if (expression[i] === ".") {
+      confirm = false;
+    }
+  }
+  return confirm;
 }
