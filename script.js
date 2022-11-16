@@ -148,8 +148,10 @@ function main(button, type) {
     //can only be added if last digit was a number
     if (typeof expression[expression.length - 1] === "number") {
       if (validExpression()) {
-        expression.push(button);
-        resultDisp.textContent = expression.join("");
+        if (noDecimalFrom(opIndex)) {
+          expression.push(button);
+          resultDisp.textContent = expression.join("");
+        }
       } else if (noDecimalFrom(0)) {
         expression.push(button);
         resultDisp.textContent = expression.join("");
@@ -170,6 +172,7 @@ function main(button, type) {
   }
 
   if (button == "=") {
+    //checks if the expression is valid to execute the calculation
     if (validExpression()) {
       displayExpression();
       displayResult();
@@ -208,6 +211,7 @@ function isOperator(button) {
   return confirm;
 }
 
+//clears the expression display
 function clearExp() {
   expression.splice(0, expression.length);
   resultDisp.textContent = expression.join("");
@@ -236,6 +240,7 @@ function displayResult() {
   resultDisp.textContent = expression.join("");
 }
 
+//checks if the expression is valid to be calculated
 function validExpression() {
   if (opIndex !== undefined) {
     let firstTerm = expression.slice(0, opIndex).join(""); //selects the first term of the array
@@ -265,7 +270,7 @@ function fixDecimal(calculationResult) {
 // checks if there is no decimal point from the specified point in expression
 function noDecimalFrom(startPoint) {
   let confirm = true;
-  for(let i = startPoint; i < expression.length; i++){
+  for (let i = startPoint; i < expression.length; i++) {
     if (expression[i] === ".") {
       confirm = false;
     }
