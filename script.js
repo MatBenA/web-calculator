@@ -262,7 +262,7 @@ function fixDecimal(calculationResult) {
   }
 }
 
-// checks if there is no decimal point in the entire expression
+// checks if there is no decimal point from the specified point in expression
 function noDecimalFrom(startPoint) {
   let confirm = true;
   for(let i = startPoint; i < expression.length; i++){
